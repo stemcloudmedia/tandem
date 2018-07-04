@@ -22,6 +22,7 @@ type InsertLayerInnerProps = {
 const CURSOR_MAP = {
   [ToolType.COMPONENT]: "crosshair",
   [ToolType.ELEMENT]: "crosshair",
+  [ToolType.ARTBOARD]: "crosshair",
   [ToolType.TEXT]: "text"
 };
 

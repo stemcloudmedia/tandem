@@ -124,7 +124,8 @@ import {
   INHERIT_ITEM_CLICK,
   InheritItemClick,
   CANVAS_MOUSE_DOUBLE_CLICKED,
-  CanvasMouseMoved
+  CanvasMouseMoved,
+  SHORTCUT_A_KEY_DOWN
 } from "../actions";
 import {
   queueOpenFile,
@@ -175,7 +176,7 @@ import {
   shiftActiveEditorTab,
   confirm,
   ConfirmType,
-  openSyntheticVisibleNodeOriginFile,
+  openSyntheticVisibleNodeOriginFile
 } from "../state";
 import {
   PCSourceTagNames,
@@ -232,7 +233,9 @@ import {
   getPCVariants,
   canRemoveSyntheticVisibleNode,
   persistInheritStyle,
-  persistInheritStyleComponentId
+  persistInheritStyleComponentId,
+  createPCArtboard,
+  PCArtboard
 } from "paperclip";
 import {
   roundBounds,
@@ -265,9 +268,9 @@ import {
   createDirectory,
   sortFSItems,
   EMPTY_OBJECT,
-  getNestedTreeNodeById,
+  getNestedTreeNodeById
 } from "tandem-common";
-import {clamp, last} from "lodash";
+import { clamp, last } from "lodash";
 
 const ZOOM_SENSITIVITY = process.platform === "win32" ? 2500 : 250;
 const MIN_ZOOM = 0.02;
@@ -350,7 +353,11 @@ export const rootReducer = (state: RootState, action: Action): RootState => {
 
       const selectedNodeId = state.selectedNodeIds[0];
       if (selectedNodeId) {
-        const document = getSyntheticDocumentByDependencyUri(fileUri, state.documents, state.graph);
+        const document = getSyntheticDocumentByDependencyUri(
+          fileUri,
+          state.documents,
+          state.graph
+        );
         if (getNestedTreeNodeById(selectedNodeId, document)) {
           return centerEditorCanvas(state, fileUri, getSelectionBounds(state));
         }
@@ -444,7 +451,13 @@ export const rootReducer = (state: RootState, action: Action): RootState => {
 
       if (state.queuedDndInfo) {
         const { item, point, editorUri } = state.queuedDndInfo;
-        return handleLoadedDroppedItem(item, point, editorUri, { ...state, queuedDndInfo: null }, content);
+        return handleLoadedDroppedItem(
+          item,
+          point,
+          editorUri,
+          { ...state, queuedDndInfo: null },
+          content
+        );
       }
 
       const editor = getEditorWindowWithFileUri(uri, state);
@@ -457,9 +470,7 @@ export const rootReducer = (state: RootState, action: Action): RootState => {
         return state;
       }
       state = setNextOpenFile(
-        removeTemporaryOpenFiles(
-          openFile(uri, false, false, state)
-        )
+        removeTemporaryOpenFiles(openFile(uri, false, false, state))
       );
       return state;
     }
@@ -675,30 +686,60 @@ export const canvasReducer = (state: RootState, action: Action) => {
     }
 
     case ADD_VARIANT_BUTTON_CLICKED: {
-      const node = getSyntheticNodeById(state.selectedNodeIds[0], state.documents);
+      const node = getSyntheticNodeById(
+        state.selectedNodeIds[0],
+        state.documents
+      );
       const frame = getSyntheticVisibleNodeFrame(node, state.frames);
-      const contentNode = getSyntheticNodeById(frame.contentNodeId, state.documents);
-      state = persistRootState(state => persistAddVariant(contentNode, state), state);
-      state = updateRootState({ selectedVariant: last(getPCVariants(getSyntheticSourceNode(contentNode, state.graph))) }, state);
+      const contentNode = getSyntheticNodeById(
+        frame.contentNodeId,
+        state.documents
+      );
+      state = persistRootState(
+        state => persistAddVariant(contentNode, state),
+        state
+      );
+      state = updateRootState(
+        {
+          selectedVariant: last(
+            getPCVariants(getSyntheticSourceNode(contentNode, state.graph))
+          )
+        },
+        state
+      );
       return state;
     }
 
     case REMOVE_VARIANT_BUTTON_CLICKED: {
       const variant = state.selectedVariant;
-      state = persistRootState(state => persistRemoveVariant(variant, state), state);
+      state = persistRootState(
+        state => persistRemoveVariant(variant, state),
+        state
+      );
       state = updateRootState({ selectedVariant: null }, state);
       return state;
     }
 
     case VARIANT_DEFAULT_SWITCH_CLICKED: {
       const { variant } = action as VariantDefaultSwitchClicked;
-      state = persistRootState(state => persistUpdateVariant({ isDefault: !variant.isDefault }, variant, state), state);
+      state = persistRootState(
+        state =>
+          persistUpdateVariant(
+            { isDefault: !variant.isDefault },
+            variant,
+            state
+          ),
+        state
+      );
       return state;
     }
 
     case VARIANT_LABEL_CHANGED: {
       const { variant, newLabel } = action as VariantLabelChanged;
-      state = persistRootState(state => persistUpdateVariant({ label: newLabel }, variant, state), state);
+      state = persistRootState(
+        state => persistUpdateVariant({ label: newLabel }, variant, state),
+        state
+      );
       return state;
     }
 
@@ -706,9 +747,15 @@ export const canvasReducer = (state: RootState, action: Action) => {
       const { variant } = action as VariantClicked;
 
       // must be enabled in order to see CSS changes
-      const selectedVariant = state.selectedVariant && state.selectedVariant.id === variant.id ? null : variant;
+      const selectedVariant =
+        state.selectedVariant && state.selectedVariant.id === variant.id
+          ? null
+          : variant;
       if (selectedVariant) {
-        state = persistRootState(state => persistUpdateVariant({ isDefault: true }, variant, state), state);
+        state = persistRootState(
+          state => persistUpdateVariant({ isDefault: true }, variant, state),
+          state
+        );
       }
       state = updateRootState({ selectedVariant }, state);
       return state;
@@ -716,15 +763,39 @@ export const canvasReducer = (state: RootState, action: Action) => {
 
     case COMPONENT_INSTANCE_VARIANT_TOGGLED: {
       const { variant } = action as VariantClicked;
-      const element = getSyntheticNodeById(state.selectedNodeIds[0], state.documents) as SyntheticInstanceElement;
-      state = persistRootState(state => persistToggleVariantDefault(element, variant.id, state.selectedVariant, state), state);
+      const element = getSyntheticNodeById(
+        state.selectedNodeIds[0],
+        state.documents
+      ) as SyntheticInstanceElement;
+      state = persistRootState(
+        state =>
+          persistToggleVariantDefault(
+            element,
+            variant.id,
+            state.selectedVariant,
+            state
+          ),
+        state
+      );
       return state;
     }
 
     case INSTANCE_VARIANT_RESET_CLICKED: {
       const { variant } = action as VariantClicked;
-      const element = getSyntheticNodeById(state.selectedNodeIds[0], state.documents) as SyntheticInstanceElement;
-      state = persistRootState(state => persistRemoveVariantOverride(element, variant.id, state.selectedVariant, state), state);
+      const element = getSyntheticNodeById(
+        state.selectedNodeIds[0],
+        state.documents
+      ) as SyntheticInstanceElement;
+      state = persistRootState(
+        state =>
+          persistRemoveVariantOverride(
+            element,
+            variant.id,
+            state.selectedVariant,
+            state
+          ),
+        state
+      );
       return state;
     }
 
@@ -775,7 +846,7 @@ export const canvasReducer = (state: RootState, action: Action) => {
             height: canvasHeight
           }),
           clamp(
-            translate.zoom + translate.zoom * deltaY / ZOOM_SENSITIVITY,
+            translate.zoom + (translate.zoom * deltaY) / ZOOM_SENSITIVITY,
             MIN_ZOOM,
             MAX_ZOOM
           ),
@@ -873,15 +944,19 @@ export const canvasReducer = (state: RootState, action: Action) => {
         state
       );
 
+      const { toolType } = state;
       let targetNodeId: string;
-      state = updateRootState({ activeEditorFilePath: activeFilePath }, state)
+      state = updateRootState({ activeEditorFilePath: activeFilePath }, state);
       const editorWindow = getEditorWindowWithFileUri(activeFilePath, state);
 
       if (!editorWindow.movingOrResizing) {
-        targetNodeId = getCanvasMouseTargetNodeId(
-          state,
-          action as CanvasToolOverlayMouseMoved
-        );
+        targetNodeId =
+          toolType === ToolType.ARTBOARD
+            ? null
+            : getCanvasMouseTargetNodeId(
+                state,
+                action as CanvasToolOverlayMouseMoved
+              );
       }
 
       state = updateRootState(
@@ -959,7 +1034,6 @@ export const canvasReducer = (state: RootState, action: Action) => {
         return setSelectedSyntheticVisibleNodeIds(state);
       }
 
-
       if (!altKey) {
         state = handleArtboardSelectionFromAction(
           state,
@@ -987,7 +1061,10 @@ export const canvasReducer = (state: RootState, action: Action) => {
         return state;
       }
 
-      state = openSyntheticVisibleNodeOriginFile(getSyntheticNodeById(targetNodeId, state.documents), state);
+      state = openSyntheticVisibleNodeOriginFile(
+        getSyntheticNodeById(targetNodeId, state.documents),
+        state
+      );
       return state;
     }
 
@@ -1124,8 +1201,13 @@ export const canvasReducer = (state: RootState, action: Action) => {
     case INHERIT_PANE_REMOVE_BUTTON_CLICK: {
       const { selectedInheritComponentId, selectedNodeIds } = state;
       const node = getSyntheticNodeById(selectedNodeIds[0], state.documents);
-      state = persistRootState((state) => {
-        return persistInheritStyle({ [selectedInheritComponentId]: undefined }, node, state.selectedVariant, state);
+      state = persistRootState(state => {
+        return persistInheritStyle(
+          { [selectedInheritComponentId]: undefined },
+          node,
+          state.selectedVariant,
+          state
+        );
       }, state);
       state = updateRootState({ selectedInheritComponentId: null }, state);
       return state;
@@ -1136,9 +1218,19 @@ export const canvasReducer = (state: RootState, action: Action) => {
       const node = getSyntheticNodeById(selectedNodeIds[0], state.documents);
       const sourceNode = getSyntheticSourceNode(node, state.graph);
 
-      state = persistRootState((state) => {
+      state = persistRootState(state => {
         // undefined so that nothing is selected in dropdown.
-        state = persistInheritStyle({ [Date.now()]: { priority: Object.keys(sourceNode.inheritStyle || EMPTY_OBJECT).length } }, node, state.selectedVariant, state);
+        state = persistInheritStyle(
+          {
+            [Date.now()]: {
+              priority: Object.keys(sourceNode.inheritStyle || EMPTY_OBJECT)
+                .length
+            }
+          },
+          node,
+          state.selectedVariant,
+          state
+        );
         return state;
       }, state);
 
@@ -1147,16 +1239,33 @@ export const canvasReducer = (state: RootState, action: Action) => {
 
     case INHERIT_PANE_ITEM_CLICK: {
       const { componentId } = action as InheritPaneItemClick;
-      state = updateRootState({ selectedInheritComponentId: state.selectedInheritComponentId === componentId ? null : componentId }, state);
+      state = updateRootState(
+        {
+          selectedInheritComponentId:
+            state.selectedInheritComponentId === componentId
+              ? null
+              : componentId
+        },
+        state
+      );
       return state;
     }
 
     case INHERIT_ITEM_COMPONENT_TYPE_CHANGE_COMPLETE: {
-      const { oldComponentId, newComponentId} = action as InheritItemComponentTypeChangeComplete;
+      const {
+        oldComponentId,
+        newComponentId
+      } = action as InheritItemComponentTypeChangeComplete;
       const { selectedNodeIds } = state;
       const node = getSyntheticNodeById(selectedNodeIds[0], state.documents);
-      state = persistRootState((state) => {
-        state = persistInheritStyleComponentId(oldComponentId, newComponentId, node, state.selectedVariant, state);
+      state = persistRootState(state => {
+        state = persistInheritStyleComponentId(
+          oldComponentId,
+          newComponentId,
+          node,
+          state.selectedVariant,
+          state
+        );
         return state;
       }, state);
       return state;
@@ -1164,18 +1273,28 @@ export const canvasReducer = (state: RootState, action: Action) => {
 
     case INHERIT_ITEM_CLICK: {
       const { componentId } = action as InheritItemClick;
-      state = updateRootState({ selectedInheritComponentId: state.selectedInheritComponentId === componentId ? null : componentId }, state);
+      state = updateRootState(
+        {
+          selectedInheritComponentId:
+            state.selectedInheritComponentId === componentId
+              ? null
+              : componentId
+        },
+        state
+      );
       return state;
     }
 
     case PC_RUNTIME_EVALUATED: {
-
       const queuedScopeSelect = state.queuedScopeSelect;
 
       if (queuedScopeSelect) {
-        state = selectInsertedSyntheticVisibleNodes(queuedScopeSelect.previousState, state, queuedScopeSelect.scope);
+        state = selectInsertedSyntheticVisibleNodes(
+          queuedScopeSelect.previousState,
+          state,
+          queuedScopeSelect.scope
+        );
       }
-
 
       // ensure that synthetic nodes still exist, otherwise remove them
       // from selection.
@@ -1281,7 +1400,9 @@ export const canvasReducer = (state: RootState, action: Action) => {
           return persistInsertNodeFromPoint(
             createPCElement(
               "div",
-              { "box-sizing": "border-box" },
+
+              // display block so that width & height show up
+              { "box-sizing": "border-box", display: "block" },
               null,
               null,
               "Element"
@@ -1300,6 +1421,15 @@ export const canvasReducer = (state: RootState, action: Action) => {
             state
           );
         }
+
+        case ToolType.ARTBOARD: {
+          return persistInsertNodeFromPoint(
+            createPCArtboard("Artboard"),
+            fileUri,
+            point,
+            state
+          );
+        }
       }
     }
   }
@@ -1313,7 +1443,7 @@ const INSERT_ARTBOARD_WIDTH = 100;
 const INSERT_ARTBOARD_HEIGHT = 100;
 
 const persistInsertNodeFromPoint = (
-  node: PCVisibleNode,
+  node: PCVisibleNode | PCArtboard,
   fileUri: string,
   point: Point,
   state: RootState
@@ -1415,8 +1545,13 @@ const getNewSyntheticVisibleNodeBounds = (
   return scaleInnerBounds(innerBounds, currentBounds, newBounds);
 };
 
-
-const handleLoadedDroppedItem =   (item, point: Point, editorUri: string, state: RootState, content?: Buffer) => {
+const handleLoadedDroppedItem = (
+  item,
+  point: Point,
+  editorUri: string,
+  state: RootState,
+  content?: Buffer
+) => {
   const targetNodeId = getCanvasMouseTargetNodeIdFromPoint(
     state,
     point,
@@ -1557,6 +1692,9 @@ const shortcutReducer = (state: RootState, action: Action): RootState => {
     case SHORTCUT_R_KEY_DOWN: {
       return isInputSelected(state) ? state : setTool(ToolType.ELEMENT, state);
     }
+    case SHORTCUT_A_KEY_DOWN: {
+      return isInputSelected(state) ? state : setTool(ToolType.ARTBOARD, state);
+    }
     case SHORTCUT_C_KEY_DOWN: {
       return isInputSelected(state)
         ? state
@@ -1615,11 +1753,14 @@ const shortcutReducer = (state: RootState, action: Action): RootState => {
       );
 
       if (!canRemoveSyntheticVisibleNode(firstNode, state)) {
-        return confirm("Please remove all instances of component before deleting it.", ConfirmType.ERROR, state);
+        return confirm(
+          "Please remove all instances of component before deleting it.",
+          ConfirmType.ERROR,
+          state
+        );
       }
 
       return persistRootState(state => {
-
         const document = getSyntheticVisibleNodeDocument(
           firstNode.id,
           state.documents
@@ -1681,7 +1822,11 @@ const clipboardReducer = (state: RootState, action: Action) => {
         state
       );
 
-      state = queueSelectInsertedSyntheticVisibleNodes(oldState, state, scopeNode);
+      state = queueSelectInsertedSyntheticVisibleNodes(
+        oldState,
+        state,
+        scopeNode
+      );
 
       return state;
     }

@@ -101,6 +101,7 @@ export default compose(
       dispatch(cssPropertyChanged(name, value));
     },
     onPropertyChangeComplete: ({ dispatch }) => (name, value) => {
+      console.log("change complete", name, value);
       dispatch(cssPropertyChangeCompleted(name, value));
     }
   }),

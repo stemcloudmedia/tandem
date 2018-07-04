@@ -1,7 +1,10 @@
 import { Menu, MenuItem, MenuItemConstructorOptions, app } from "electron";
 import { fork, put, take } from "redux-saga/effects";
 import { eventChannel } from "redux-saga";
-import { MAIN_WINDOW_OPENED, OPEN_WORKSPACE_MENU_ITEM_CLICKED } from "../actions";
+import {
+  MAIN_WINDOW_OPENED,
+  OPEN_WORKSPACE_MENU_ITEM_CLICKED
+} from "../actions";
 import { publicActionCreator } from "tandem-common";
 
 const shortcutKeyDown = publicActionCreator((type: string) => ({
@@ -116,6 +119,13 @@ export function* shortcutsSaga() {
             accelerator: "r",
             click: () => {
               emit(shortcutKeyDown("SHORTCUT_R_KEY_DOWN"));
+            }
+          },
+          {
+            label: "Artboard",
+            accelerator: "a",
+            click: () => {
+              emit(shortcutKeyDown("SHORTCUT_A_KEY_DOWN"));
             }
           },
           {

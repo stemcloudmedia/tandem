@@ -24,6 +24,7 @@ type ToolbarInnerProps = {
   onTabClick: any;
   onComponentClick: any;
   onElementClick: any;
+  onArtboardClick: any;
   onTabCloseButtonClick: any;
 } & ToolbarOuterProps;
 
@@ -48,6 +49,9 @@ export default compose<ToolbarInnerProps, ToolbarOuterProps>(
     },
     onElementClick: ({ dispatch }) => () => {
       dispatch(toolbarToolClicked(ToolType.ELEMENT));
+    },
+    onArtboardClick: ({ dispatch }) => () => {
+      dispatch(toolbarToolClicked(ToolType.ARTBOARD));
     }
   }),
   Base => ({
@@ -57,7 +61,8 @@ export default compose<ToolbarInnerProps, ToolbarOuterProps>(
     onPointerClick,
     onTextClick,
     onComponentClick,
-    onElementClick
+    onElementClick,
+    onArtboardClick
   }: ToolbarInnerProps) => {
     const tabs = editorWindow.tabUris.map(uri => {
       return (
@@ -92,6 +97,9 @@ export default compose<ToolbarInnerProps, ToolbarOuterProps>(
         }}
         elementProps={{
           onClick: onElementClick
+        }}
+        artboardProps={{
+          onClick: onArtboardClick
         }}
         tabsProps={{
           children: tabs

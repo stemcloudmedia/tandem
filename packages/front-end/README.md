@@ -4,10 +4,14 @@ OBJECTIVE:
 
 IMMEDIATE:
 
+- consider frame element
+- label for highlighted elements
+- breadcrumbs
 - fix selecting newly inserted frame
 - double click to edit
 - label show showing
 - drag tabs to other editors
+- reset transform for content node
 
 - tidy tdproject
 - color picker
