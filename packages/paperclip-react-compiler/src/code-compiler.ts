@@ -31,7 +31,9 @@ import {
   isPCComponentInstance,
   isPCComponentOrInstance,
   getPCNodeModule,
-  getPCVariants
+  getPCVariants,
+  InheritStyle,
+  getPCModuleExportableNodes
 } from "paperclip";
 import { camelCase, uniq, kebabCase, last, negate } from "lodash";
 import {
@@ -62,7 +64,6 @@ import {
   setCurrentScope,
   addScopedLayerLabel
 } from "./utils";
-import { InheritStyle } from "paperclip";
 export const compilePaperclipModuleToReact = (
   entry: PCDependency,
   graph: DependencyGraph
@@ -126,7 +127,7 @@ const translateModule = (module: PCModule, context: TranslateContext) => {
 
   context = addLine("\nvar _EMPTY_OBJECT = {}", context);
 
-  context = module.children
+  context = getPCModuleExportableNodes(module)
     .filter(isComponent)
     .reduce(
       (context, component: PCComponent) =>
@@ -135,7 +136,7 @@ const translateModule = (module: PCModule, context: TranslateContext) => {
     );
 
   if (context.options.compileNonComponents !== false) {
-    context = module.children
+    context = getPCModuleExportableNodes(module)
       .filter(negate(isComponent))
       .reduce(
         (context, component: ContentNode) =>
@@ -473,7 +474,7 @@ const translateContentNode = (
     context = addOpenTag(`React.createElement('span', null, `, context);
     context = translateVisibleNode(contentNode, context);
     context = addCloseTag(`);`, context);
-  } else {
+  } else if (contentNode.name === PCSourceTagNames.ELEMENT) {
     context = translateElement(contentNode, context);
   }
   context = addLine(";", context);

@@ -17,7 +17,7 @@ import {
 import { mapValues, merge, uniq, isEqual } from "lodash";
 import { Dependency, DependencyGraph, updateGraphDependency } from "./graph";
 
-export const PAPERCLIP_MODULE_VERSION = "0.0.3";
+export const PAPERCLIP_MODULE_VERSION = "0.0.4";
 
 /*------------------------------------------
  * CONSTANTS
@@ -91,7 +91,7 @@ export type PCComponent = {
 export type PCArtboard = {
   label?: string;
   children: Array<PCVisibleNode | PCComponent>;
-} & PCBaseSourceNode<PCSourceTagNames.ARTBOARD>;
+} & PCBaseElement<PCSourceTagNames.ARTBOARD>;
 
 export type PCVariant = {
   label?: string;
@@ -179,13 +179,18 @@ export type PCTextNode = {
   value: string;
 } & PCBaseVisibleNode<PCSourceTagNames.TEXT>;
 
-export type PCVisibleNode = PCElement | PCTextNode | PCComponentInstanceElement;
+export type PCVisibleNode =
+  | PCElement
+  | PCTextNode
+  | PCComponentInstanceElement
+  | PCArtboard;
 export type PCNode =
   | PCModule
   | PCComponent
   | PCVariant
   | PCOverride
-  | PCVisibleNode;
+  | PCVisibleNode
+  | PCArtboard;
 
 export type PCComputedOverrideMap = {
   [COMPUTED_OVERRIDE_DEFAULT_KEY]: PCComputedOverrideVariantMap;
@@ -240,9 +245,12 @@ export const createPCArtboard = (
   children?: Array<PCComponent | PCVisibleNode>
 ): PCArtboard => ({
   id: generateUID(),
+  is: "div",
   label,
   name: PCSourceTagNames.ARTBOARD,
   metadata: EMPTY_OBJECT,
+  attributes: EMPTY_OBJECT,
+  style: EMPTY_OBJECT,
   children: children || EMPTY_ARRAY
 });
 
@@ -371,6 +379,15 @@ export const isPCComponentOrInstance = (
   node: PCNode
 ): node is PCComponent | PCComponentInstanceElement =>
   isPCComponentInstance(node) || isComponent(node);
+
+export const isPCArtbord = (node: PCNode): node is PCArtboard =>
+  node.name === PCSourceTagNames.ARTBOARD;
+export const getPCModuleExportableNodes = (module: PCModule) =>
+  module.children.reduce((children, child) => {
+    return isPCArtbord(child)
+      ? [...children, ...child.children]
+      : [...children, child];
+  }, []) as Array<PCComponent | PCVisibleNode>;
 
 export const extendsComponent = (
   element: PCElement | PCComponent | PCComponentInstanceElement

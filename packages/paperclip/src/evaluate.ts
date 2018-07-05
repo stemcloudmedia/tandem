@@ -32,7 +32,8 @@ import {
   getPCVariants,
   PCVariant,
   isComponent,
-  InheritStyle
+  InheritStyle,
+  PCArtboard
 } from "./dsl";
 import {
   KeyValue,
@@ -94,7 +95,7 @@ const wrapModuleInDependencyGraph = (module: PCModule): DependencyGraph => ({
 
 const evaluateContentNode = memoize(
   (
-    node: PCVisibleNode | PCComponent,
+    node: PCVisibleNode | PCComponent | PCArtboard,
     componentMap: ComponentRefs,
     sourceUri: string
   ): SyntheticVisibleNode => {
@@ -240,7 +241,12 @@ const evaluateStyle = (
 };
 
 const evaluateLabel = (
-  node: PCComponent | PCElement | PCComponentInstanceElement | PCTextNode,
+  node:
+    | PCComponent
+    | PCElement
+    | PCComponentInstanceElement
+    | PCTextNode
+    | PCArtboard,
   selfPath: string,
   overrides: EvalOverrides
 ) => {
@@ -264,7 +270,10 @@ const evaluateVisibleNode = (
   componentMap: ComponentRefs,
   sourceUri: string
 ): SyntheticVisibleNode => {
-  if (node.name === PCSourceTagNames.ELEMENT) {
+  if (
+    node.name === PCSourceTagNames.ELEMENT ||
+    node.name === PCSourceTagNames.ARTBOARD
+  ) {
     return evaluateElement(
       node,
       instancePath,
@@ -301,7 +310,7 @@ const evaluateVisibleNode = (
 };
 
 const evaluateElement = (
-  element: PCComponent | PCElement | PCComponentInstanceElement,
+  element: PCComponent | PCElement | PCComponentInstanceElement | PCArtboard,
   instancePath: string,
   immutable: boolean,
   isCreatedFromComponent: boolean,
@@ -336,7 +345,12 @@ const evaluateElement = (
 };
 
 const evaluateOverride = (
-  element: PCComponent | PCElement | PCComponentInstanceElement | PCTextNode,
+  element:
+    | PCComponent
+    | PCElement
+    | PCComponentInstanceElement
+    | PCTextNode
+    | PCArtboard,
   selfPath: string,
   propertyName: PCOverridablePropertyName,
   overrides: EvalOverrides
@@ -369,7 +383,7 @@ const evaluateVariants = (
 };
 
 const evaluateAttributes = (
-  element: PCComponent | PCElement | PCComponentInstanceElement,
+  element: PCComponent | PCElement | PCComponentInstanceElement | PCArtboard,
   selfPath: string,
   overrides: EvalOverrides,
   sourceUri: string
@@ -410,7 +424,12 @@ const evaluateAttributes = (
 };
 
 const evaluateChildren = (
-  parent: PCComponent | PCElement | PCComponentInstanceElement | PCOverride,
+  parent:
+    | PCComponent
+    | PCElement
+    | PCComponentInstanceElement
+    | PCOverride
+    | PCArtboard,
   instancePath: string,
   immutable: boolean,
   isCreatedFromComponent: boolean,

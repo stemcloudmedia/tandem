@@ -1423,12 +1423,14 @@ export const canvasReducer = (state: RootState, action: Action) => {
         }
 
         case ToolType.ARTBOARD: {
-          return persistInsertNodeFromPoint(
-            createPCArtboard("Artboard"),
-            fileUri,
-            point,
-            state
-          );
+          throw new Error("TODO");
+          return state;
+          // return persistInsertNodeFromPoint(
+          //   createPCArtboard("Artboard"),
+          //   fileUri,
+          //   point,
+          //   state
+          // );
         }
       }
     }
@@ -1443,7 +1445,7 @@ const INSERT_ARTBOARD_WIDTH = 100;
 const INSERT_ARTBOARD_HEIGHT = 100;
 
 const persistInsertNodeFromPoint = (
-  node: PCVisibleNode | PCArtboard,
+  node: PCVisibleNode,
   fileUri: string,
   point: Point,
   state: RootState
