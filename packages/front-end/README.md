@@ -4,6 +4,8 @@ OBJECTIVE:
 
 IMMEDIATE:
 
+- maybe need to ditch frames? Maybe allow components to be nested?
+- Specific frame UI?
 - Frame element
 - controller UI
 - metadata UI

@@ -33,10 +33,10 @@
       "name": "artboard",
       "is": "div",
       "style": {
-        "left": 473,
-        "top": 631,
-        "width": 288,
-        "height": 50
+        "left": 307,
+        "top": 850,
+        "width": 210.94493271845965,
+        "height": 45.28234281949756
       },
       "attributes": {},
       "metadata": {},
@@ -51,7 +51,9 @@
             "position": "absolute",
             "box-sizing": "border-box",
             "background": "transparent",
-            "transform": "translate(-50%, -50%)"
+            "transform": "translate(-50%, -50%)",
+            "left": "100px",
+            "top": "10px"
           },
           "attributes": {},
           "id": "5c08964d24625",
@@ -91,96 +93,6 @@
           "id": "5c08964d900983",
           "name": "component",
           "children": [],
-          "metadata": {}
-        }
-      ]
-    },
-    {
-      "id": "5822254757",
-      "name": "artboard",
-      "is": "div",
-      "style": {
-        "left": -55,
-        "top": 885,
-        "width": 782.0920951245917,
-        "height": 570.5906702797574
-      },
-      "attributes": {},
-      "metadata": {},
-      "children": [
-        {
-          "id": "236ecf1a47759",
-          "label": "Preview",
-          "is": "div",
-          "name": "element",
-          "attributes": {},
-          "style": {
-            "background": "grey"
-          },
-          "children": [
-            {
-              "id": "236ecf1a44568",
-              "variant": {},
-              "is": "67e386c762",
-              "name": "component-instance",
-              "attributes": {},
-              "style": {
-                "box-sizing": "border-box",
-                "background": "white",
-                "padding": "10px",
-                "display": "inline-block",
-                "flex-direction": "column",
-                "font-family": "Helvetica",
-                "color": "grey",
-                "position": "relative",
-                "width": "300px",
-                "top": "100px",
-                "left": "100px"
-              },
-              "children": [
-                {
-                  "id": "f4c968d148331",
-                  "propertyName": "style",
-                  "targetIdPath": [
-                    "f4c968d135444"
-                  ],
-                  "value": {},
-                  "name": "override",
-                  "children": []
-                },
-                {
-                  "id": "4197941155264",
-                  "propertyName": "style",
-                  "targetIdPath": [
-                    "4197941151996"
-                  ],
-                  "value": {},
-                  "name": "override",
-                  "children": []
-                },
-                {
-                  "id": "2477db583351",
-                  "propertyName": "style",
-                  "targetIdPath": [
-                    "41979411451593"
-                  ],
-                  "value": {
-                    "position": "relative"
-                  },
-                  "name": "override",
-                  "children": []
-                }
-              ],
-              "metadata": {
-                "bounds": {
-                  "left": 81,
-                  "top": 365,
-                  "right": 370.0470628523325,
-                  "bottom": 613.3866802446275
-                }
-              }
-            }
-          ],
           "metadata": {}
         }
       ]
@@ -266,8 +178,8 @@
       "style": {
         "left": -333,
         "top": 427,
-        "width": 293.6542270494879,
-        "height": 200.72133737570448
+        "width": 314.32973725356953,
+        "height": 234.55399043692898
       },
       "attributes": {},
       "metadata": {},
@@ -372,13 +284,13 @@
     {
       "id": "e6fcb7e22",
       "is": "div",
-      "label": "Frame",
+      "label": "Raw Inputs",
       "name": "artboard",
       "metadata": {},
       "attributes": {},
       "style": {
-        "left": -810,
-        "top": 586,
+        "left": -640,
+        "top": 854,
         "width": 370.22696028942937,
         "height": 223.85402346598835
       },
@@ -686,15 +598,16 @@
     {
       "id": "2cc75fa66",
       "is": "div",
-      "label": "Frame",
+      "label": "Color Picker",
       "name": "artboard",
       "metadata": {},
       "attributes": {},
       "style": {
-        "left": -779,
-        "top": 966,
-        "width": 377.73326474191344,
-        "height": 385.2395691943975
+        "left": -245,
+        "top": 852,
+        "width": 537.9657405915435,
+        "height": 473.23609281673544,
+        "background": "rgba(200, 200, 200, 1)"
       },
       "children": [
         {
