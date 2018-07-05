@@ -1,33 +1,40 @@
 {
   "id": "76b155a0907062",
   "name": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "children": [
     {
-      "label": "Text Input",
-      "is": "input",
+      "id": "12001502073",
+      "name": "artboard",
+      "is": "div",
       "style": {
-        "width": "100%",
-        "padding": "4px 8px",
-        "border-radius": "2px",
-        "border": "1px solid rgba(0,0,0,0.08)",
-        "box-sizing": "border-box"
+        "left": 384,
+        "top": 298,
+        "width": 100,
+        "height": 29.035808758901908
       },
       "attributes": {},
-      "id": "7149f8199122",
-      "name": "component",
+      "metadata": {},
       "children": [
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 384,
-          "top": 298,
-          "right": 484,
-          "bottom": 327.0358087589019
+        {
+          "label": "Text Input",
+          "is": "input",
+          "style": {
+            "width": "100%",
+            "padding": "4px 8px",
+            "border-radius": "2px",
+            "border": "1px solid rgba(0,0,0,0.08)",
+            "box-sizing": "border-box"
+          },
+          "attributes": {},
+          "id": "7149f8199122",
+          "name": "component",
+          "children": [],
+          "metadata": {},
+          "controllers": [
+            "./controller.tsx"
+          ]
         }
-      },
-      "controllers": [
-        "./controller.tsx"
       ]
     }
   ],

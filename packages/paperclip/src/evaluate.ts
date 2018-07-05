@@ -261,7 +261,7 @@ const evaluateLabel = (
 };
 
 const evaluateVisibleNode = (
-  node: PCVisibleNode,
+  node: PCVisibleNode | PCComponent,
   instancePath: string,
   immutable: boolean,
   isCreatedFromComponent: boolean,
@@ -270,7 +270,20 @@ const evaluateVisibleNode = (
   componentMap: ComponentRefs,
   sourceUri: string
 ): SyntheticVisibleNode => {
-  if (
+  if (node.name === PCSourceTagNames.COMPONENT) {
+    return evaluateComponentInstance(
+      node,
+      node,
+      null,
+      null,
+      false,
+      true,
+      EMPTY_OBJECT,
+      overrides,
+      componentMap,
+      sourceUri
+    );
+  } else if (
     node.name === PCSourceTagNames.ELEMENT ||
     node.name === PCSourceTagNames.ARTBOARD
   ) {

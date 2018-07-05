@@ -1,92 +1,108 @@
 {
   "id": "664248a04",
   "name": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "children": [
     {
-      "id": "bfa9209a5",
-      "is": "5d7d4069129476",
-      "name": "component-instance",
-      "attributes": {},
-      "style": {},
-      "children": [
-        {
-          "id": "bfa9209a6",
-          "propertyName": "isDefault",
-          "targetIdPath": [
-            "66d16f05"
-          ],
-          "value": false,
-          "name": "override",
-          "children": []
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 220,
-          "top": 278,
-          "right": 336,
-          "bottom": 300.4100033070649
-        }
-      }
-    },
-    {
-      "label": "Right Gutter Tab",
+      "id": "120015020160",
+      "name": "artboard",
       "is": "div",
       "style": {
-        "font-family": "Helvetica",
-        "color": "grey",
-        "text-transform": "uppercase",
-        "text-align": "center",
-        "width": "100%",
-        "padding": "8px",
-        "font-size": "9px",
-        "cursor": "pointer",
-        "background": "rgba(240, 240, 240, 1)"
+        "left": 220,
+        "top": 278,
+        "width": 116,
+        "height": 22.410003307064926
       },
       "attributes": {},
-      "id": "5d7d4069129476",
-      "name": "component",
+      "metadata": {},
       "children": [
         {
-          "id": "5d7d4069129475",
-          "name": "text",
-          "label": "Text",
-          "value": "tab",
+          "id": "bfa9209a5",
+          "is": "5d7d4069129476",
+          "name": "component-instance",
+          "attributes": {},
+          "style": {},
+          "children": [
+            {
+              "id": "bfa9209a6",
+              "propertyName": "isDefault",
+              "targetIdPath": [
+                "66d16f05"
+              ],
+              "value": false,
+              "name": "override",
+              "children": []
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "120015020161",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 454,
+        "top": 294,
+        "width": 116,
+        "height": 22.410003307064926
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Right Gutter Tab",
+          "is": "div",
           "style": {
-            "font-size": "0.9em"
+            "font-family": "Helvetica",
+            "color": "grey",
+            "text-transform": "uppercase",
+            "text-align": "center",
+            "width": "100%",
+            "padding": "8px",
+            "font-size": "9px",
+            "cursor": "pointer",
+            "background": "rgba(240, 240, 240, 1)"
           },
-          "children": [],
+          "attributes": {},
+          "id": "5d7d4069129476",
+          "name": "component",
+          "children": [
+            {
+              "id": "5d7d4069129475",
+              "name": "text",
+              "label": "Text",
+              "value": "tab",
+              "style": {
+                "font-size": "0.9em"
+              },
+              "children": [],
+              "metadata": {}
+            },
+            {
+              "id": "66d16f05",
+              "name": "variant",
+              "label": "selected",
+              "isDefault": true,
+              "children": [],
+              "metadata": {}
+            },
+            {
+              "id": "66d16f06",
+              "variantId": "66d16f05",
+              "propertyName": "style",
+              "targetIdPath": [],
+              "value": {
+                "background": "rgba(255, 255, 255, 1)"
+              },
+              "name": "override",
+              "children": []
+            }
+          ],
           "metadata": {}
-        },
-        {
-          "id": "66d16f05",
-          "name": "variant",
-          "label": "selected",
-          "isDefault": true,
-          "children": [],
-          "metadata": {}
-        },
-        {
-          "id": "66d16f06",
-          "variantId": "66d16f05",
-          "propertyName": "style",
-          "targetIdPath": [],
-          "value": {
-            "background": "rgba(255, 255, 255, 1)"
-          },
-          "name": "override",
-          "children": []
         }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 454,
-          "top": 294,
-          "right": 570,
-          "bottom": 316.4100033070649
-        }
-      }
+      ]
     }
   ],
   "metadata": {}

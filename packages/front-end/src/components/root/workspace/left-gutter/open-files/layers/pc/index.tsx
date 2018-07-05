@@ -9,7 +9,8 @@ import {
   SyntheticVisibleNode,
   Frame,
   SyntheticElement,
-  SyntheticDocument
+  SyntheticDocument,
+  isSyntheticDocument
 } from "paperclip";
 import { compose, pure, withHandlers } from "recompose";
 import {
@@ -50,20 +51,30 @@ const isMovableNode = ({ node, inComponentInstance }: any) => {
 
 const canDropNode = (
   child: SyntheticVisibleNode,
-  { node, inComponentInstance }: any,
+  { node, root }: any,
   offset: TreeMoveOffset
 ) => {
+  // content node, is frame
   if (child.isContentNode) {
-    if (child.isCreatedFromComponent) {
-      if (child.isComponentInstance) {
-        return true;
-      } else if (offset !== TreeMoveOffset.APPEND && node.isContentNode) {
-        return true;
-      } else {
-        return false;
-      }
+    // relative is content node, must be before or after
+    if (node.isContentNode) {
+      return (
+        offset === TreeMoveOffset.BEFORE || offset === TreeMoveOffset.AFTER
+      );
     }
+    return isSyntheticDocument(node);
+  } else if (child.isCreatedFromComponent) {
+    if (node.isContentNode) {
+      return (
+        offset === TreeMoveOffset.APPEND || offset === TreeMoveOffset.PREPEND
+      );
+    }
+
+    // TODO - need to check if parent is content node
+
+    return child.isComponentInstance;
   }
+
   return true;
 };
 

@@ -474,8 +474,14 @@ const translateContentNode = (
     context = addOpenTag(`React.createElement('span', null, `, context);
     context = translateVisibleNode(contentNode, context);
     context = addCloseTag(`);`, context);
-  } else if (contentNode.name === PCSourceTagNames.ELEMENT) {
+  } else if (
+    contentNode.name === PCSourceTagNames.ELEMENT ||
+    contentNode.name === PCSourceTagNames.COMPONENT_INSTANCE ||
+    contentNode.name === PCSourceTagNames.COMPONENT
+  ) {
     context = translateElement(contentNode, context);
+  } else {
+    throw new Error(`Unsupported content node type ${contentNode.name}`);
   }
   context = addLine(";", context);
 
@@ -656,13 +662,6 @@ const translateStaticOverrides = (
   }
   return context;
 };
-
-const getPCOverrideVarName = memoize(
-  (override: PCOverride, component: ContentNode) => {
-    const parent = getParentTreeNode(override.id, component);
-    return `_${parent.id}_${override.targetIdPath.join("_")}Props`;
-  }
-);
 
 const translateControllers = (
   component: PCComponent,

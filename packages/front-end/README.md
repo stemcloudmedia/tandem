@@ -4,7 +4,9 @@ OBJECTIVE:
 
 IMMEDIATE:
 
-- consider frame element
+- Frame element
+- controller UI
+- metadata UI
 - label for highlighted elements
 - breadcrumbs
 - fix selecting newly inserted frame

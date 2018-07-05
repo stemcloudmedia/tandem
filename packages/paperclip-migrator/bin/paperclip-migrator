@@ -4,17 +4,22 @@ const fs = require("fs");
 const migrate = require("..");
 const glob = require("glob");
 let filePattern = process.argv[2];
+const shouldWrite = process.argv.indexOf("--write") !== -1;
 
-const files = glob.sync(filePattern, { dot: false, ignore: ["node_modules"] });
+const files = glob.sync(filePattern);
 
-
-console.log(files);
-
-
-
-console.log(process.argv);
-// filePath = filePath.charAt(0) === "/" ? filePath : path.resolve(process.cwd(), filePath);
-
-// const newModule = migrate(JSON.parse(fs.readFileSync(filePath, "utf8")));
-
-// console.log(JSON.stringify(newModule, null, 2));
+for (const file of files) {
+  const filePath = path.resolve(process.cwd(), file);
+  const oldContent = fs.readFileSync(filePath, "utf8");
+  if (!oldContent) {
+    continue;
+  }
+  const newModule = migrate(JSON.parse(oldContent));
+  const content = JSON.stringify(newModule, null, 2);
+  if (shouldWrite) {
+    fs.writeFileSync(filePath, content, "utf8");
+    console.log("migrated %s", filePath);
+  } else {
+    console.log(content);
+  }
+}

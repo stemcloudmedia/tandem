@@ -1,55 +1,63 @@
 {
   "id": "296b92da36265",
   "name": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "children": [
     {
-      "label": "Box Shadows",
-      "is": "b6c162d113",
-      "style": {},
+      "id": "120015020138",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 500,
+        "top": 289,
+        "width": 400,
+        "height": 300
+      },
       "attributes": {},
-      "id": "bcda9fb597619",
-      "name": "component",
+      "metadata": {},
       "children": [
         {
-          "id": "bcda9fb597618",
-          "propertyName": "text",
-          "targetIdPath": [
-            "b6c162d1281"
+          "label": "Box Shadows",
+          "is": "b6c162d113",
+          "style": {},
+          "attributes": {},
+          "id": "bcda9fb597619",
+          "name": "component",
+          "children": [
+            {
+              "id": "bcda9fb597618",
+              "propertyName": "text",
+              "targetIdPath": [
+                "b6c162d1281"
+              ],
+              "value": "Box Shadows",
+              "name": "override",
+              "children": []
+            },
+            {
+              "id": "bcda9fb5128264",
+              "propertyName": "text",
+              "targetIdPath": [
+                "6fd27ae1495"
+              ],
+              "value": "  ",
+              "name": "override",
+              "children": []
+            },
+            {
+              "id": "6fd0628f2117",
+              "propertyName": "style",
+              "targetIdPath": [
+                "b6c162d132"
+              ],
+              "value": {},
+              "name": "override",
+              "children": []
+            }
           ],
-          "value": "Box Shadows",
-          "name": "override",
-          "children": []
-        },
-        {
-          "id": "bcda9fb5128264",
-          "propertyName": "text",
-          "targetIdPath": [
-            "6fd27ae1495"
-          ],
-          "value": "  ",
-          "name": "override",
-          "children": []
-        },
-        {
-          "id": "6fd0628f2117",
-          "propertyName": "style",
-          "targetIdPath": [
-            "b6c162d132"
-          ],
-          "value": {},
-          "name": "override",
-          "children": []
+          "metadata": {}
         }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 500,
-          "top": 289,
-          "right": 900,
-          "bottom": 589
-        }
-      }
+      ]
     }
   ],
   "metadata": {}

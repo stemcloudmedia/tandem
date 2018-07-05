@@ -206,7 +206,6 @@ import {
   persistRawCSSText,
   SyntheticTextNode,
   updatePCNodeMetadata,
-  PCVisibleNodeMetadataKey,
   getSyntheticDocumentByDependencyUri,
   getFrameSyntheticNode,
   SyntheticDocument,
@@ -235,7 +234,9 @@ import {
   persistInheritStyle,
   persistInheritStyleComponentId,
   createPCArtboard,
-  PCArtboard
+  PCArtboard,
+  isSyntheticDocument,
+  isPCArtbord
 } from "paperclip";
 import {
   roundBounds,
@@ -1423,14 +1424,12 @@ export const canvasReducer = (state: RootState, action: Action) => {
         }
 
         case ToolType.ARTBOARD: {
-          throw new Error("TODO");
-          return state;
-          // return persistInsertNodeFromPoint(
-          //   createPCArtboard("Artboard"),
-          //   fileUri,
-          //   point,
-          //   state
-          // );
+          return persistInsertNodeFromPoint(
+            createPCArtboard("Frame"),
+            fileUri,
+            point,
+            state
+          );
         }
       }
     }
@@ -1464,22 +1463,17 @@ const persistInsertNodeFromPoint = (
       }
     );
 
-    let bounds = {
-      left: 0,
-      top: 0,
-      right: INSERT_ARTBOARD_WIDTH,
-      bottom: INSERT_ARTBOARD_HEIGHT,
-      ...(node.metadata[PCVisibleNodeMetadataKey.BOUNDS] || {})
+    const style = {
+      ...newPoint,
+      width: INSERT_ARTBOARD_WIDTH,
+      height: INSERT_ARTBOARD_HEIGHT
     };
 
-    bounds = moveBounds(bounds, newPoint);
-
-    node = updatePCNodeMetadata(
-      {
-        [PCVisibleNodeMetadataKey.BOUNDS]: bounds
-      },
-      node
-    );
+    if (isPCArtbord(node)) {
+      node = { ...node, style };
+    } else {
+      node = createPCArtboard("Frame", style, [node]);
+    }
 
     targetNode = getSyntheticDocumentByDependencyUri(
       fileUri,
@@ -1614,16 +1608,15 @@ const handleLoadedDroppedItem = (
         state.graph
       );
 
-  if (target.name === SYNTHETIC_DOCUMENT_NODE_NAME) {
-    sourceNode = updatePCNodeMetadata(
+  if (isSyntheticDocument(target) && !isPCArtbord(sourceNode)) {
+    sourceNode = createPCArtboard(
+      "Frame",
       {
-        [PCVisibleNodeMetadataKey.BOUNDS]: moveBounds(
-          sourceNode.metadata[PCVisibleNodeMetadataKey.BOUNDS] ||
-            DEFAULT_FRAME_BOUNDS,
-          point
-        )
+        ...point,
+        width: INSERT_ARTBOARD_WIDTH,
+        height: INSERT_ARTBOARD_HEIGHT
       },
-      sourceNode
+      [sourceNode]
     );
   }
 

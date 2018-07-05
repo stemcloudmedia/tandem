@@ -3,14 +3,9 @@ import * as React from "react";
 import * as cx from "classnames";
 import { identity } from "lodash";
 import { compose, pure, withHandlers, withState, withProps } from "recompose";
-import {
-  EMPTY_ARRAY,
-  getNestedTreeNodeById,
-  TreeNode,
-  TreeMoveOffset
-} from "tandem-common";
+import { getNestedTreeNodeById, TreeNode, TreeMoveOffset } from "tandem-common";
 import { Dispatch } from "redux";
-import { DropTarget, DragSource, DropTargetCollector } from "react-dnd";
+import { DropTarget, DragSource } from "react-dnd";
 import { FocusComponent } from "../focus";
 
 export type TreeLayerDroppedNodeActionCreator = (
@@ -44,6 +39,7 @@ type TreeNodeLayerLabelOuterProps = {
   depth: number;
   selected: boolean;
   hovering: boolean;
+  alwaysExpanded: boolean;
   expanded: boolean;
   editingLabel: boolean;
   dispatch: Dispatch<any>;
@@ -235,6 +231,7 @@ export const createTreeLayerComponents = <
     const {
       connectDropTarget,
       connectDragSource,
+      alwaysExpanded,
       node,
       canDrop,
       isOver,
@@ -286,7 +283,7 @@ export const createTreeLayerComponents = <
           ) : (
             <span>
               <span onClick={onExpandToggleButtonClick}>
-                {hasChildren(node) ? (
+                {hasChildren(node) && !alwaysExpanded ? (
                   expanded ? (
                     <i className="ion-arrow-down-b" />
                   ) : (
@@ -373,6 +370,7 @@ export const createTreeLayerComponents = <
     if (!root) {
       root = node;
     }
+    const alwaysExpanded = node.isContentNode;
 
     return (
       <div className="m-tree-node-layer">
@@ -392,11 +390,12 @@ export const createTreeLayerComponents = <
           hovering={hovering}
           dispatch={dispatch}
           depth={depth}
-          expanded={expanded}
+          expanded={expanded || alwaysExpanded}
+          alwaysExpanded={alwaysExpanded}
           {...rest}
         />
         <div className="children">
-          {!node.children.length || expanded
+          {!node.children.length || expanded || alwaysExpanded
             ? renderChildren({
                 hoveringNodeIds,
                 selectedNodeIds,

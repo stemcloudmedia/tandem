@@ -45,11 +45,6 @@ export enum PCOverridablePropertyName {
   LABEL = "label"
 }
 
-export enum PCVisibleNodeMetadataKey {
-  // defined when dropped into the root document
-  BOUNDS = "bounds"
-}
-
 export const COMPUTED_OVERRIDE_DEFAULT_KEY = "default";
 
 /*------------------------------------------
@@ -242,6 +237,7 @@ export const createPCComponent = (
 
 export const createPCArtboard = (
   label?: string,
+  style?: KeyValue<any>,
   children?: Array<PCComponent | PCVisibleNode>
 ): PCArtboard => ({
   id: generateUID(),
@@ -250,7 +246,7 @@ export const createPCArtboard = (
   name: PCSourceTagNames.ARTBOARD,
   metadata: EMPTY_OBJECT,
   attributes: EMPTY_OBJECT,
-  style: EMPTY_OBJECT,
+  style: style || EMPTY_OBJECT,
   children: children || EMPTY_ARRAY
 });
 
@@ -366,7 +362,9 @@ export const isValueOverride = (
 export const isVisibleNode = (node: PCNode) =>
   node.name === PCSourceTagNames.ELEMENT ||
   node.name === PCSourceTagNames.TEXT ||
-  isPCComponentInstance(node);
+  node.name === PCSourceTagNames.COMPONENT ||
+  node.name === PCSourceTagNames.COMPONENT_INSTANCE;
+
 export const isPCOverride = (node: PCNode): node is PCOverride =>
   node.name === PCSourceTagNames.OVERRIDE;
 export const isComponent = (node: PCNode): node is PCComponent =>
@@ -411,6 +409,8 @@ export const validatePCModule = (module: PCModule) => {
   }
   return module.children.every(validateModuleChild);
 };
+
+// export const isOrContainsComponent = (node: PCNode) => node.name === PCSourceTagNames.COMPONENT || findNestedNode(node, child => child.name === PCSourceTagNames.COMPONENT);
 
 const validateModuleChild = (child: PCVisibleNode | PCComponent) => {
   if (child.name === PCSourceTagNames.COMPONENT) {
@@ -475,7 +475,7 @@ const validatePCElement = (element: PCElement) => {
 
 export const getModuleComponents = memoize(
   (root: PCModule): PCComponent[] =>
-    root.children.reduce((components, contentNode) => {
+    getPCModuleExportableNodes(root).reduce((components, contentNode) => {
       return contentNode.name === PCSourceTagNames.COMPONENT
         ? [...components, contentNode]
         : components;

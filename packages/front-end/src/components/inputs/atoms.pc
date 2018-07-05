@@ -1,87 +1,103 @@
 {
   "id": "76b155a0869608",
   "name": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "children": [
     {
-      "id": "8f355c9a1",
-      "variant": {},
-      "is": "97a34b151010442",
-      "name": "component-instance",
+      "id": "12001502016",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 943,
+        "top": 46,
+        "width": 293.6542270494879,
+        "height": 200.72133737570448
+      },
       "attributes": {},
-      "style": {},
+      "metadata": {},
       "children": [
         {
-          "id": "8f355c9a2",
-          "propertyName": "children",
-          "targetIdPath": [
-            "97a34b151010440"
-          ],
-          "name": "override",
+          "id": "8f355c9a1",
+          "variant": {},
+          "is": "97a34b151010442",
+          "name": "component-instance",
+          "attributes": {},
+          "style": {},
           "children": [
             {
-              "id": "8f355c9a3",
-              "label": "Element",
-              "is": "ul",
-              "name": "element",
-              "attributes": {},
-              "style": {},
+              "id": "8f355c9a2",
+              "propertyName": "children",
+              "targetIdPath": [
+                "97a34b151010440"
+              ],
+              "name": "override",
               "children": [
                 {
-                  "id": "8f355c9a8",
+                  "id": "8f355c9a3",
                   "label": "Element",
-                  "is": "li",
+                  "is": "ul",
                   "name": "element",
                   "attributes": {},
                   "style": {},
                   "children": [
                     {
-                      "id": "8f355c9a9",
-                      "name": "text",
-                      "label": "Text",
-                      "value": "Selected background atom",
+                      "id": "8f355c9a8",
+                      "label": "Element",
+                      "is": "li",
+                      "name": "element",
+                      "attributes": {},
                       "style": {},
-                      "children": [],
+                      "children": [
+                        {
+                          "id": "8f355c9a9",
+                          "name": "text",
+                          "label": "Text",
+                          "value": "Selected background atom",
+                          "style": {},
+                          "children": [],
+                          "metadata": {}
+                        }
+                      ],
                       "metadata": {}
-                    }
-                  ],
-                  "metadata": {}
-                },
-                {
-                  "id": "8f355c9a10",
-                  "label": "Element",
-                  "is": "li",
-                  "name": "element",
-                  "attributes": {},
-                  "style": {},
-                  "children": [
+                    },
                     {
-                      "id": "8f355c9a11",
-                      "name": "text",
-                      "label": "Text",
-                      "value": "Selected font color atom",
+                      "id": "8f355c9a10",
+                      "label": "Element",
+                      "is": "li",
+                      "name": "element",
+                      "attributes": {},
                       "style": {},
-                      "children": [],
+                      "children": [
+                        {
+                          "id": "8f355c9a11",
+                          "name": "text",
+                          "label": "Text",
+                          "value": "Selected font color atom",
+                          "style": {},
+                          "children": [],
+                          "metadata": {}
+                        }
+                      ],
                       "metadata": {}
-                    }
-                  ],
-                  "metadata": {}
-                },
-                {
-                  "id": "8f355c9a4",
-                  "label": "Element",
-                  "is": "li",
-                  "name": "element",
-                  "attributes": {},
-                  "style": {},
-                  "children": [
+                    },
                     {
-                      "id": "8f355c9a5",
-                      "name": "text",
-                      "label": "Text",
-                      "value": "atom previews",
+                      "id": "8f355c9a4",
+                      "label": "Element",
+                      "is": "li",
+                      "name": "element",
+                      "attributes": {},
                       "style": {},
-                      "children": [],
+                      "children": [
+                        {
+                          "id": "8f355c9a5",
+                          "name": "text",
+                          "label": "Text",
+                          "value": "atom previews",
+                          "style": {},
+                          "children": [],
+                          "metadata": {}
+                        }
+                      ],
                       "metadata": {}
                     }
                   ],
@@ -89,428 +105,796 @@
                 }
               ],
               "metadata": {}
+            },
+            {
+              "id": "8f355c9a6",
+              "propertyName": "text",
+              "targetIdPath": [
+                "97a34b151010439"
+              ],
+              "value": " ",
+              "name": "override",
+              "children": []
+            }
+          ],
+          "metadata": {},
+          "label": "TODO"
+        }
+      ]
+    },
+    {
+      "id": "12001502017",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 1305,
+        "top": 1327,
+        "width": 285,
+        "height": 59.471217980184974
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Input Row",
+          "is": "div",
+          "style": {
+            "display": "flex",
+            "align-items": "center"
+          },
+          "attributes": {},
+          "id": "2657ec412855",
+          "name": "component",
+          "children": [],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502018",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 1321,
+        "top": 1474,
+        "width": 228,
+        "height": 64.12752069753287
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Input Row Item",
+          "is": "div",
+          "style": {
+            "margin-right": "8px",
+            "box-sizing": "border-box"
+          },
+          "attributes": {},
+          "id": "bcda9fb551452",
+          "name": "component",
+          "children": [],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502019",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 376,
+        "top": 67,
+        "width": 100,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Background 1 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "background": "rgba(255, 255, 255, 1)"
+          },
+          "attributes": {},
+          "id": "ca6d1d842",
+          "name": "component",
+          "children": [],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502020",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 376,
+        "top": 207,
+        "width": 100,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Border 1 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "border": "1px solid rgba(200, 200, 200, 1)"
+          },
+          "attributes": {},
+          "id": "ca6d1d844",
+          "name": "component",
+          "children": [],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502021",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 373,
+        "top": 496,
+        "width": 100,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Typography Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "font-family": "Avenir Next"
+          },
+          "attributes": {},
+          "id": "ca6d1d8454",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8453",
+              "name": "text",
+              "label": "Text",
+              "value": "Avenir Next",
+              "style": {
+                "font-family": "Avenir Next"
+              },
+              "children": [],
+              "metadata": {}
             }
           ],
           "metadata": {}
-        },
+        }
+      ]
+    },
+    {
+      "id": "12001502022",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 759,
+        "top": 493,
+        "width": 123.2998769972603,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
         {
-          "id": "8f355c9a6",
-          "propertyName": "text",
-          "targetIdPath": [
-            "97a34b151010439"
+          "label": "Heading 3 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "font-size": "1.7em",
+            "font-weight": "600"
+          },
+          "attributes": {},
+          "id": "ca6d1d8452",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8451",
+              "name": "text",
+              "label": "Text",
+              "value": "header\n",
+              "style": {
+                "font-family": "Avenir Next",
+                "text-transform": "uppercase"
+              },
+              "children": [],
+              "metadata": {}
+            }
           ],
-          "value": " ",
-          "name": "override",
-          "children": []
+          "metadata": {}
         }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 943,
-          "top": 46,
-          "right": 1236.6542270494879,
-          "bottom": 246.72133737570448
-        }
-      },
-      "label": "TODO"
+      ]
     },
     {
-      "label": "Input Row",
+      "id": "12001502023",
+      "name": "artboard",
       "is": "div",
       "style": {
-        "display": "flex",
-        "align-items": "center"
+        "left": 625,
+        "top": 487,
+        "width": 100,
+        "height": 100
       },
       "attributes": {},
-      "id": "2657ec412855",
-      "name": "component",
-      "children": [],
-      "metadata": {
-        "bounds": {
-          "left": 1305,
-          "top": 1327,
-          "right": 1590,
-          "bottom": 1386.471217980185
-        }
-      }
-    },
-    {
-      "label": "Input Row Item",
-      "is": "div",
-      "style": {
-        "margin-right": "8px",
-        "box-sizing": "border-box"
-      },
-      "attributes": {},
-      "id": "bcda9fb551452",
-      "name": "component",
-      "children": [],
-      "metadata": {
-        "bounds": {
-          "left": 1321,
-          "top": 1474,
-          "right": 1549,
-          "bottom": 1538.1275206975329
-        }
-      }
-    },
-    {
-      "label": "Background 1 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "background": "rgba(255, 255, 255, 1)"
-      },
-      "attributes": {},
-      "id": "ca6d1d842",
-      "name": "component",
-      "children": [],
-      "metadata": {
-        "bounds": {
-          "left": 376,
-          "top": 67,
-          "right": 476,
-          "bottom": 167
-        }
-      }
-    },
-    {
-      "label": "Border 1 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "border": "1px solid rgba(200, 200, 200, 1)"
-      },
-      "attributes": {},
-      "id": "ca6d1d844",
-      "name": "component",
-      "children": [],
-      "metadata": {
-        "bounds": {
-          "left": 376,
-          "top": 207,
-          "right": 476,
-          "bottom": 307
-        }
-      }
-    },
-    {
-      "label": "Typography Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "font-family": "Avenir Next"
-      },
-      "attributes": {},
-      "id": "ca6d1d8454",
-      "name": "component",
+      "metadata": {},
       "children": [
         {
-          "id": "ca6d1d8453",
-          "name": "text",
-          "label": "Text",
-          "value": "Avenir Next",
+          "label": "Heading 2 Atom",
+          "is": "div",
           "style": {
-            "font-family": "Avenir Next"
+            "box-sizing": "border-box",
+            "font-size": "1.3em",
+            "font-weight": "600"
           },
+          "attributes": {},
+          "id": "ca6d1d8448",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8447",
+              "name": "text",
+              "label": "Text",
+              "value": "header\n",
+              "style": {
+                "font-family": "Avenir Next",
+                "text-transform": "uppercase"
+              },
+              "children": [],
+              "metadata": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502024",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 494,
+        "top": 494,
+        "width": 100,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Heading 1 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "font-size": "0.9em",
+            "font-weight": "600"
+          },
+          "attributes": {},
+          "id": "ca6d1d8450",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8449",
+              "name": "text",
+              "label": "Text",
+              "value": "header\n",
+              "style": {
+                "font-family": "Avenir Next",
+                "text-transform": "uppercase"
+              },
+              "children": [],
+              "metadata": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502025",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 754,
+        "top": 651,
+        "width": 103.04567011210565,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Padding X 4 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "padding-left": "16px",
+            "padding-right": "16px"
+          },
+          "attributes": {},
+          "id": "ca6d1d8446",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8445",
+              "name": "text",
+              "label": "Text",
+              "value": "content",
+              "style": {
+                "font-family": "Avenir Next"
+              },
+              "children": [],
+              "metadata": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502026",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 621,
+        "top": 649,
+        "width": 103.04567011210565,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Padding X 3 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "padding-left": "8px",
+            "padding-right": "8px"
+          },
+          "attributes": {},
+          "id": "ca6d1d8444",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8443",
+              "name": "text",
+              "label": "Text",
+              "value": "content",
+              "style": {
+                "font-family": "Avenir Next"
+              },
+              "children": [],
+              "metadata": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502027",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 494,
+        "top": 646,
+        "width": 103.04567011210565,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Padding X 2 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "padding-left": "4px",
+            "padding-right": "4px"
+          },
+          "attributes": {},
+          "id": "ca6d1d8442",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8441",
+              "name": "text",
+              "label": "Text",
+              "value": "content",
+              "style": {
+                "font-family": "Avenir Next"
+              },
+              "children": [],
+              "metadata": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502028",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 371,
+        "top": 796,
+        "width": 101.01522337070196,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Padding Y 1 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "padding-left": "2px",
+            "padding-right": "2px"
+          },
+          "attributes": {},
+          "id": "ca6d1d8440",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8439",
+              "name": "text",
+              "label": "Text",
+              "value": "content",
+              "style": {
+                "font-family": "Avenir Next"
+              },
+              "children": [],
+              "metadata": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502029",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 370,
+        "top": 648,
+        "width": 101.01522337070196,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Padding X 1 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "padding-left": "2px",
+            "padding-right": "2px"
+          },
+          "attributes": {},
+          "id": "ca6d1d8438",
+          "name": "component",
+          "children": [
+            {
+              "id": "ca6d1d8437",
+              "name": "text",
+              "label": "Text",
+              "value": "content",
+              "style": {
+                "font-family": "Avenir Next"
+              },
+              "children": [],
+              "metadata": {}
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502030",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 500,
+        "top": 65,
+        "width": 100,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Background 2 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "background": "rgba(240, 240, 240, 1)"
+          },
+          "attributes": {},
+          "id": "ca6d1d8431",
+          "name": "component",
+          "children": [
+            {
+              "id": "7a08e6a09",
+              "name": "text",
+              "label": "Text",
+              "value": "Click to edit",
+              "style": {},
+              "children": [],
+              "metadata": {},
+              "inheritStyle": {
+                "ca6d1d8454": {
+                  "priority": 0
+                }
+              }
+            }
+          ],
+          "metadata": {},
+          "inheritStyle": {
+            "ca6d1d8454": {
+              "priority": 0
+            },
+            "ca6d1d8433": {
+              "priority": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "12001502031",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 372,
+        "top": 346,
+        "width": 100,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Font Color 1 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "color": "#777"
+          },
+          "attributes": {},
+          "id": "ca6d1d8433",
+          "name": "component",
+          "children": [
+            {
+              "id": "7a08e6a01",
+              "label": "Element",
+              "is": "div",
+              "name": "element",
+              "attributes": {},
+              "style": {
+                "box-sizing": "border-box",
+                "display": "block",
+                "width": "100%",
+                "height": "100%"
+              },
+              "children": [
+                {
+                  "id": "ca6d1d8434",
+                  "name": "text",
+                  "label": "Text",
+                  "value": "text\n",
+                  "style": {
+                    "font-family": "Avenir Next",
+                    "color": "#777"
+                  },
+                  "children": [],
+                  "metadata": {}
+                }
+              ],
+              "metadata": {},
+              "inheritStyle": {
+                "ca6d1d842": {
+                  "priority": 0
+                }
+              }
+            }
+          ],
+          "metadata": {}
+        }
+      ]
+    },
+    {
+      "id": "12001502032",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 621,
+        "top": 67,
+        "width": 100,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Background 3 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "background": "rgba(203, 203, 203, 1)"
+          },
+          "attributes": {},
+          "id": "ba1504245",
+          "name": "component",
+          "children": [
+            {
+              "id": "7a08e6a011",
+              "name": "text",
+              "label": "Text",
+              "value": "Click to edit",
+              "style": {},
+              "children": [],
+              "metadata": {}
+            }
+          ],
+          "metadata": {},
+          "inheritStyle": {
+            "ca6d1d8454": {
+              "priority": 2
+            },
+            "7a08e6a03": {
+              "priority": 4
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "12001502033",
+      "name": "artboard",
+      "is": "div",
+      "style": {
+        "left": 498,
+        "top": 206,
+        "width": 100,
+        "height": 100
+      },
+      "attributes": {},
+      "metadata": {},
+      "children": [
+        {
+          "label": "Border Radius 1 Atom",
+          "is": "div",
+          "style": {
+            "box-sizing": "border-box",
+            "border-radius": "2px"
+          },
+          "attributes": {},
+          "id": "ba1504244",
+          "name": "component",
           "children": [],
           "metadata": {}
         }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 373,
-          "top": 496,
-          "right": 473,
-          "bottom": 596
-        }
-      }
+      ]
     },
     {
-      "label": "Heading 3 Atom",
+      "id": "12001502034",
+      "name": "artboard",
       "is": "div",
       "style": {
-        "box-sizing": "border-box",
-        "font-size": "1.7em",
-        "font-weight": "600"
+        "left": 510,
+        "top": 344,
+        "width": 100,
+        "height": 100
       },
       "attributes": {},
-      "id": "ca6d1d8452",
-      "name": "component",
+      "metadata": {},
       "children": [
         {
-          "id": "ca6d1d8451",
-          "name": "text",
-          "label": "Text",
-          "value": "header\n",
+          "label": "Font Color 2 Atom",
+          "is": "div",
           "style": {
-            "font-family": "Avenir Next",
-            "text-transform": "uppercase"
+            "box-sizing": "border-box"
           },
-          "children": [],
+          "attributes": {},
+          "id": "7a08e6a03",
+          "name": "component",
+          "children": [
+            {
+              "id": "7a08e6a04",
+              "label": "Element",
+              "is": "div",
+              "name": "element",
+              "attributes": {},
+              "style": {
+                "box-sizing": "border-box",
+                "display": "block",
+                "width": "100%",
+                "height": "100%"
+              },
+              "children": [
+                {
+                  "id": "7a08e6a05",
+                  "name": "text",
+                  "label": "Text",
+                  "value": "text\n",
+                  "style": {
+                    "font-family": "Avenir Next",
+                    "color": "#777"
+                  },
+                  "children": [],
+                  "metadata": {}
+                }
+              ],
+              "metadata": {
+                "bounds": {
+                  "left": 382,
+                  "top": 356,
+                  "right": 482,
+                  "bottom": 456
+                }
+              },
+              "inheritStyle": {
+                "ca6d1d8431": {
+                  "priority": 0
+                }
+              }
+            }
+          ],
           "metadata": {}
         }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 759,
-          "top": 493,
-          "right": 882.2998769972603,
-          "bottom": 593
-        }
-      }
+      ]
     },
     {
-      "label": "Heading 2 Atom",
+      "id": "12001502035",
+      "name": "artboard",
       "is": "div",
       "style": {
-        "box-sizing": "border-box",
-        "font-size": "1.3em",
-        "font-weight": "600"
+        "left": 744,
+        "top": 66,
+        "width": 154.72812899898895,
+        "height": 100
       },
       "attributes": {},
-      "id": "ca6d1d8448",
-      "name": "component",
+      "metadata": {},
       "children": [
         {
-          "id": "ca6d1d8447",
-          "name": "text",
-          "label": "Text",
-          "value": "header\n",
+          "label": "Background Selected 1 Atom",
+          "is": "div",
           "style": {
-            "font-family": "Avenir Next",
-            "text-transform": "uppercase"
+            "box-sizing": "border-box",
+            "background": "#00B5FF",
+            "color": "white"
           },
-          "children": [],
-          "metadata": {}
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 625,
-          "top": 487,
-          "right": 725,
-          "bottom": 587
-        }
-      }
-    },
-    {
-      "label": "Heading 1 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "font-size": "0.9em",
-        "font-weight": "600"
-      },
-      "attributes": {},
-      "id": "ca6d1d8450",
-      "name": "component",
-      "children": [
-        {
-          "id": "ca6d1d8449",
-          "name": "text",
-          "label": "Text",
-          "value": "header\n",
-          "style": {
-            "font-family": "Avenir Next",
-            "text-transform": "uppercase"
-          },
-          "children": [],
-          "metadata": {}
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 494,
-          "top": 494,
-          "right": 594,
-          "bottom": 594
-        }
-      }
-    },
-    {
-      "label": "Padding X 4 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "padding-left": "16px",
-        "padding-right": "16px"
-      },
-      "attributes": {},
-      "id": "ca6d1d8446",
-      "name": "component",
-      "children": [
-        {
-          "id": "ca6d1d8445",
-          "name": "text",
-          "label": "Text",
-          "value": "content",
-          "style": {
-            "font-family": "Avenir Next"
-          },
-          "children": [],
-          "metadata": {}
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 754,
-          "top": 651,
-          "right": 857.0456701121057,
-          "bottom": 751
-        }
-      }
-    },
-    {
-      "label": "Padding X 3 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "padding-left": "8px",
-        "padding-right": "8px"
-      },
-      "attributes": {},
-      "id": "ca6d1d8444",
-      "name": "component",
-      "children": [
-        {
-          "id": "ca6d1d8443",
-          "name": "text",
-          "label": "Text",
-          "value": "content",
-          "style": {
-            "font-family": "Avenir Next"
-          },
-          "children": [],
-          "metadata": {}
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 621,
-          "top": 649,
-          "right": 724.0456701121057,
-          "bottom": 749
-        }
-      }
-    },
-    {
-      "label": "Padding X 2 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "padding-left": "4px",
-        "padding-right": "4px"
-      },
-      "attributes": {},
-      "id": "ca6d1d8442",
-      "name": "component",
-      "children": [
-        {
-          "id": "ca6d1d8441",
-          "name": "text",
-          "label": "Text",
-          "value": "content",
-          "style": {
-            "font-family": "Avenir Next"
-          },
-          "children": [],
-          "metadata": {}
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 494,
-          "top": 646,
-          "right": 597.0456701121057,
-          "bottom": 746
-        }
-      }
-    },
-    {
-      "label": "Padding Y 1 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "padding-left": "2px",
-        "padding-right": "2px"
-      },
-      "attributes": {},
-      "id": "ca6d1d8440",
-      "name": "component",
-      "children": [
-        {
-          "id": "ca6d1d8439",
-          "name": "text",
-          "label": "Text",
-          "value": "content",
-          "style": {
-            "font-family": "Avenir Next"
-          },
-          "children": [],
-          "metadata": {}
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 371,
-          "top": 796,
-          "right": 472.01522337070196,
-          "bottom": 896
-        }
-      }
-    },
-    {
-      "label": "Padding X 1 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "padding-left": "2px",
-        "padding-right": "2px"
-      },
-      "attributes": {},
-      "id": "ca6d1d8438",
-      "name": "component",
-      "children": [
-        {
-          "id": "ca6d1d8437",
-          "name": "text",
-          "label": "Text",
-          "value": "content",
-          "style": {
-            "font-family": "Avenir Next"
-          },
-          "children": [],
-          "metadata": {}
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 370,
-          "top": 648,
-          "right": 471.01522337070196,
-          "bottom": 748
-        }
-      }
-    },
-    {
-      "label": "Background 2 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "background": "rgba(240, 240, 240, 1)"
-      },
-      "attributes": {},
-      "id": "ca6d1d8431",
-      "name": "component",
-      "children": [
-        {
-          "id": "7a08e6a09",
-          "name": "text",
-          "label": "Text",
-          "value": "Click to edit",
-          "style": {},
-          "children": [],
+          "attributes": {},
+          "id": "7a08e6a08",
+          "name": "component",
+          "children": [
+            {
+              "id": "7a08e6a013",
+              "name": "text",
+              "label": "Text",
+              "value": "text\n",
+              "style": {},
+              "children": [],
+              "metadata": {}
+            }
+          ],
           "metadata": {},
           "inheritStyle": {
             "ca6d1d8454": {
@@ -518,253 +902,37 @@
             }
           }
         }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 500,
-          "top": 65,
-          "right": 600,
-          "bottom": 165
-        }
-      },
-      "inheritStyle": {
-        "ca6d1d8454": {
-          "priority": 0
-        },
-        "ca6d1d8433": {
-          "priority": 2
-        }
-      }
+      ]
     },
     {
-      "label": "Font Color 1 Atom",
+      "id": "12001502036",
+      "name": "artboard",
       "is": "div",
       "style": {
-        "box-sizing": "border-box",
-        "color": "#777"
+        "left": 436,
+        "top": 1012,
+        "width": 100,
+        "height": 100
       },
       "attributes": {},
-      "id": "ca6d1d8433",
-      "name": "component",
+      "metadata": {},
       "children": [
         {
-          "id": "7a08e6a01",
-          "label": "Element",
+          "label": "Center Atom",
           "is": "div",
-          "name": "element",
-          "attributes": {},
           "style": {
             "box-sizing": "border-box",
-            "display": "block",
-            "width": "100%",
-            "height": "100%"
+            "left": "50%",
+            "top": "50%",
+            "transform": "translate(-50%, -50%)"
           },
-          "children": [
-            {
-              "id": "ca6d1d8434",
-              "name": "text",
-              "label": "Text",
-              "value": "text\n",
-              "style": {
-                "font-family": "Avenir Next",
-                "color": "#777"
-              },
-              "children": [],
-              "metadata": {}
-            }
-          ],
-          "metadata": {},
-          "inheritStyle": {
-            "ca6d1d842": {
-              "priority": 0
-            }
-          }
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 372,
-          "top": 346,
-          "right": 472,
-          "bottom": 446
-        }
-      }
-    },
-    {
-      "label": "Background 3 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "background": "rgba(203, 203, 203, 1)"
-      },
-      "attributes": {},
-      "id": "ba1504245",
-      "name": "component",
-      "children": [
-        {
-          "id": "7a08e6a011",
-          "name": "text",
-          "label": "Text",
-          "value": "Click to edit",
-          "style": {},
+          "attributes": {},
+          "id": "a0687f1d5",
+          "name": "component",
           "children": [],
           "metadata": {}
         }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 621,
-          "top": 67,
-          "right": 721,
-          "bottom": 167
-        }
-      },
-      "inheritStyle": {
-        "ca6d1d8454": {
-          "priority": 2
-        },
-        "7a08e6a03": {
-          "priority": 4
-        }
-      }
-    },
-    {
-      "label": "Border Radius 1 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "border-radius": "2px"
-      },
-      "attributes": {},
-      "id": "ba1504244",
-      "name": "component",
-      "children": [],
-      "metadata": {
-        "bounds": {
-          "left": 498,
-          "top": 206,
-          "right": 598,
-          "bottom": 306
-        }
-      }
-    },
-    {
-      "label": "Font Color 2 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box"
-      },
-      "attributes": {},
-      "id": "7a08e6a03",
-      "name": "component",
-      "children": [
-        {
-          "id": "7a08e6a04",
-          "label": "Element",
-          "is": "div",
-          "name": "element",
-          "attributes": {},
-          "style": {
-            "box-sizing": "border-box",
-            "display": "block",
-            "width": "100%",
-            "height": "100%"
-          },
-          "children": [
-            {
-              "id": "7a08e6a05",
-              "name": "text",
-              "label": "Text",
-              "value": "text\n",
-              "style": {
-                "font-family": "Avenir Next",
-                "color": "#777"
-              },
-              "children": [],
-              "metadata": {}
-            }
-          ],
-          "metadata": {
-            "bounds": {
-              "left": 382,
-              "top": 356,
-              "right": 482,
-              "bottom": 456
-            }
-          },
-          "inheritStyle": {
-            "ca6d1d8431": {
-              "priority": 0
-            }
-          }
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 510,
-          "top": 344,
-          "right": 610,
-          "bottom": 444
-        }
-      }
-    },
-    {
-      "label": "Background Selected 1 Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "background": "#00B5FF",
-        "color": "white"
-      },
-      "attributes": {},
-      "id": "7a08e6a08",
-      "name": "component",
-      "children": [
-        {
-          "id": "7a08e6a013",
-          "name": "text",
-          "label": "Text",
-          "value": "text\n",
-          "style": {},
-          "children": [],
-          "metadata": {}
-        }
-      ],
-      "metadata": {
-        "bounds": {
-          "left": 744,
-          "top": 66,
-          "right": 898.728128998989,
-          "bottom": 166
-        }
-      },
-      "inheritStyle": {
-        "ca6d1d8454": {
-          "priority": 0
-        }
-      }
-    },
-    {
-      "label": "Center Atom",
-      "is": "div",
-      "style": {
-        "box-sizing": "border-box",
-        "left": "50%",
-        "top": "50%",
-        "transform": "translate(-50%, -50%)"
-      },
-      "attributes": {},
-      "id": "a0687f1d5",
-      "name": "component",
-      "children": [],
-      "metadata": {
-        "bounds": {
-          "left": 436,
-          "top": 1012,
-          "right": 536,
-          "bottom": 1112
-        }
-      }
+      ]
     }
   ],
   "metadata": {}
